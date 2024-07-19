@@ -9,7 +9,8 @@ class User {
     } 
      
     function checkUser($data = array()){ 
-        if(!empty($data)){ 
+            // var_dump($data); die;
+            if(!empty($data)){ 
             $checkResult = $this->db->select("users", "*", "oauth_provider = '". $data['oauth_provider']. "' AND oauth_uid = '".$data['oauth_uid']."'");
             // Add modified time to the data array 
             if(!array_key_exists('modified', $data)){ 
@@ -19,7 +20,7 @@ class User {
             if(count($checkResult) > 0){
                 $this->db->update("users", $data, "oauth_provider = '". $data['oauth_provider']. "' AND oauth_uid = '".$data['oauth_uid']."'");
 
-            }else{ 
+            }else{
                 // Add created time to the data array 
                 if(!array_key_exists('created',$data)){
                     $data['created'] = date("Y-m-d H:i:s"); 
@@ -27,8 +28,9 @@ class User {
                 $this->db->insert("users", $data);
             }
             $userData = $checkResult[0];
+            // var_dump($userData); die;
         } 
-        $db->close();
+        $this->db->close();
         // Return user data 
         return !empty($userData)?$userData:false; 
     } 

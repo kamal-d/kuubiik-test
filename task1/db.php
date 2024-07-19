@@ -24,6 +24,7 @@ class Database {
         }
         $set = rtrim($set, ", ");
         $query = "UPDATE $tableName SET $set WHERE $condition";
+        // var_dump($query); die;
         return $this->db->exec($query);
     }
 

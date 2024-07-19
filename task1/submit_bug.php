@@ -8,7 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require_once 'db.php';
     
     $db = new Database();
-    // var_dump($db); die();
     $insertId = $db->insert("bugs", [
                     "title" => $bugTitle,
                     "comment" => $bugComment,
@@ -17,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 ]);
     $db->close();
     
-    // echo "<div id='response'>Bug reported successfully! id ".md5($insertId)."</div>";
     echo md5($insertId);
 }
 ?>

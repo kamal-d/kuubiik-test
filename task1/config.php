@@ -21,5 +21,5 @@ $gitClient = new Github_OAuth_Client(array(
  
 // Try to get the access token 
 if(isset($_SESSION['access_token'])){ 
-    $accessToken = $_SESSION['access_token']; 
+    $accessToken = $_SESSION['access_token'];
 }
